@@ -23,18 +23,22 @@ class Song
     def self.genre_count
         genre_hash = {}
         @@genres.each do |genre_name|
-            if genre_hash[genre_name]
-                genre_hash[genre_name] = 1
-            else 
-                genre_hash[genre_name] += 1
-            end 
-            genre_hash
+            genre_hash[genre_name] ||= 0
+            genre_hash[genre_name] += 1 
+            # if genre_hash[genre_name]
+            #     genre_hash[genre_name] += 1
+            # else
+            #     genre_hash[genre_name] = 1
+            # end 
         end
-        
-        # describe ".genre_count" do 
-        #     it "is a class method that returns a hash of genres and the number of songs that have those genres" do 
-        #       expect(Song.genre_count).to eq({"pop" => 1, "rap" => 2})
-        #     end
-        #   end
+        genre_hash
     end 
+    def self.artist_count
+        artist_hash = {}
+        @@artists.each do |artists_name|
+            artist_hash[artists_name] ||= 0
+            artist_hash[artists_name] += 1
+        end
+        artist_hash
+    end
 end 
